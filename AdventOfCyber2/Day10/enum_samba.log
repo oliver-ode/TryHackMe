@@ -1,0 +1,158 @@
+┌──(kali㉿kali)-[~/GitHub/TryHackMe/AdventOfCyber2/Day10]       
+└─$ enum4linux 10.10.88.217                                    
+Starting enum4linux v0.8.9 ( http://labs.portcullis.co.uk/application/enum4linux/ ) on Fri Jun 25 17:06:55 2021               
+
+ ==========================                                    
+|    Target Information    |                                   
+ ==========================                                    
+Target ........... 10.10.88.217                                
+RID Range ........ 500-550,1000-1050                           
+Username ......... ''                                          
+Password ......... ''                                          
+Known Usernames .. administrator, guest, krbtgt, domain admins, root, bin, none                                               
+
+
+ ====================================================          
+|    Enumerating Workgroup/Domain on 10.10.88.217    |         
+ ====================================================          
+[+] Got domain/workgroup name: TBFC-SMB-01                     
+
+ ============================================                  
+|    Nbtstat Information for 10.10.88.217    |                 
+ ============================================                  
+Looking up status of 10.10.88.217                              
+        TBFC-SMB        <00> -         B <ACTIVE>  Workstation Service                                                        
+        TBFC-SMB        <03> -         B <ACTIVE>  Messenger Service                                                          
+        TBFC-SMB        <20> -         B <ACTIVE>  File Server Service                                                        
+        ..__MSBROWSE__. <01> - <GROUP> B <ACTIVE>  Master Browser                                                             
+        TBFC-SMB-01     <00> - <GROUP> B <ACTIVE>  Domain/Workgroup Name                                                      
+        TBFC-SMB-01     <1d> -         B <ACTIVE>  Master Browser                                                             
+        TBFC-SMB-01     <1e> - <GROUP> B <ACTIVE>  Browser Service Elections                                                  
+
+        MAC Address = 00-00-00-00-00-00                        
+
+ =====================================                         
+|    Session Check on 10.10.88.217    |                        
+ =====================================                         
+[+] Server 10.10.88.217 allows sessions using username '', password ''                                                        
+
+ ===========================================                   
+|    Getting domain SID for 10.10.88.217    |                  
+ ===========================================                   
+Domain Name: TBFC-SMB-01                                       
+Domain Sid: (NULL SID)                                         
+[+] Can't determine if host is part of domain or part of a workgroup                                                          
+
+ ======================================                        
+|    OS information on 10.10.88.217    |                       
+ ======================================                        
+Use of uninitialized value $os_info in concatenation (.) or string at ./enum4linux.pl line 464.                               
+[+] Got OS info for 10.10.88.217 from smbclient:               
+[+] Got OS info for 10.10.88.217 from srvinfo:                 
+        TBFC-SMB       Wk Sv PrQ Unx NT SNT tbfc-smb server (Samba, Ubuntu)                                                   
+        platform_id     :       500                            
+        os version      :       6.1                            
+        server type     :       0x809a03                       
+
+ =============================                                 
+|    Users on 10.10.88.217    |                                
+ =============================                                 
+index: 0x1 RID: 0x3e8 acb: 0x00000010 Account: elfmcskidy       Name:   Desc:                                                 
+index: 0x2 RID: 0x3ea acb: 0x00000010 Account: elfmceager       Name: elfmceager        Desc:                                 
+index: 0x3 RID: 0x3e9 acb: 0x00000010 Account: elfmcelferson    Name:   Desc:                                                 
+
+user:[elfmcskidy] rid:[0x3e8]                                  
+user:[elfmceager] rid:[0x3ea]                                  
+user:[elfmcelferson] rid:[0x3e9]                               
+
+ =========================================                     
+|    Share Enumeration on 10.10.88.217    |                    
+ =========================================                     
+
+        Sharename       Type      Comment                      
+        ---------       ----      -------                      
+        tbfc-hr         Disk      tbfc-hr                      
+        tbfc-it         Disk      tbfc-it                      
+        tbfc-santa      Disk      tbfc-santa                   
+        IPC$            IPC       IPC Service (tbfc-smb server (Samba, Ubuntu))                                               
+SMB1 disabled -- no workgroup available                        
+
+[+] Attempting to map shares on 10.10.88.217                   
+//10.10.88.217/tbfc-hr  Mapping: DENIED, Listing: N/A          
+//10.10.88.217/tbfc-it  Mapping: DENIED, Listing: N/A          
+//10.10.88.217/tbfc-santa       Mapping: OK, Listing: OK       
+//10.10.88.217/IPC$     [E] Can't understand response:         
+NT_STATUS_OBJECT_NAME_NOT_FOUND listing \*                     
+
+ ====================================================          
+|    Password Policy Information for 10.10.88.217    |         
+ ====================================================          
+
+
+[+] Attaching to 10.10.88.217 using a NULL share               
+
+[+] Trying protocol 139/SMB...                                 
+
+[+] Found domain(s):                                           
+
+        [+] TBFC-SMB                                           
+        [+] Builtin                                            
+
+[+] Password Info for Domain: TBFC-SMB                         
+
+        [+] Minimum password length: 5                         
+        [+] Password history length: None                      
+        [+] Maximum password age: 37 days 6 hours 21 minutes   
+        [+] Password Complexity Flags: 000000                  
+
+                [+] Domain Refuse Password Change: 0           
+                [+] Domain Password Store Cleartext: 0         
+                [+] Domain Password Lockout Admins: 0          
+                [+] Domain Password No Clear Change: 0         
+                [+] Domain Password No Anon Change: 0          
+                [+] Domain Password Complex: 0                 
+
+        [+] Minimum password age: None                         
+        [+] Reset Account Lockout Counter: 30 minutes          
+        [+] Locked Account Duration: 30 minutes                
+        [+] Account Lockout Threshold: None                    
+        [+] Forced Log off Time: 37 days 6 hours 21 minutes    
+
+
+[+] Retieved partial password policy with rpcclient:           
+
+Password Complexity: Disabled                                  
+Minimum Password Length: 5                                     
+
+
+ ==============================                                
+|    Groups on 10.10.88.217    |                               
+ ==============================                                
+
+[+] Getting builtin groups:                                    
+
+[+] Getting builtin group memberships:                         
+
+[+] Getting local groups:                                      
+
+[+] Getting local group memberships:                           
+
+[+] Getting domain groups:                                     
+
+[+] Getting domain group memberships:                          
+
+┌──(kali㉿kali)-[~/GitHub/TryHackMe/AdventOfCyber2/Day10]       
+└─$ smbclient //10.10.88.217/tbfc-santa                        
+Enter WORKGROUP\kali's password:                               
+Try "help" to get a list of possible commands.                 
+smb: \> ls                                                     
+  .                                   D        0  Wed Nov 11 21:12:07 2020                                                    
+  ..                                  D        0  Wed Nov 11 20:32:21 2020                                                    
+  jingle-tunes                        D        0  Wed Nov 11 21:10:41 2020                                                    
+  note_from_mcskidy.txt               N      143  Wed Nov 11 21:12:07 2020                                                    
+
+                10252564 blocks of size 1024. 5368136 blocks available                                                        
+smb: \> exit                                                   
+
+┌──(kali㉿kali)-[~/GitHub/TryHackMe/AdventOfCyber2/Day10]       
+└─$                                                            

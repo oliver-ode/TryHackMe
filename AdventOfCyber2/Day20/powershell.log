@@ -1,0 +1,148 @@
+┌──(kali㉿kali)-[~/GitHub/TryHackMe/AdventOfCyber2]            
+└─$ ssh -l mceager 10.10.161.6                                 
+mceager@10.10.161.6's password:                                
+Microsoft Windows [Version 10.0.17763.737]                     
+(c) 2018 Microsoft Corporation. All rights reserved.           
+
+mceager@ELFSTATION1 C:\Users\mceager>Get-ChildItem             
+'Get-ChildItem' is not recognized as an internal or external command,                                                         
+mceager@ELFSTATION1 C:\Users\mceager>powershell                
+Windows PowerShell                                             
+Copyright (C) Microsoft Corporation. All rights reserved.      
+
+PS C:\Users\mceager> Set-Location .\Documents\                 
+PS C:\Users\mceager\Documents> Get-ChildItem                   
+
+
+    Directory: C:\Users\mceager\Documents                      
+
+----                -------------         ------ ----          
+-a----       11/23/2020  12:06 PM             22 elfone.txt    
+
+                                                               
+PS C:\Users\mceager\Documents> Get-Content elfone.txt          
+Nothing to see here...                                         
+PS C:\Users\mceager\Documents> Get-ChildItem -Hidden           
+
+                                                               
+    Directory: C:\Users\mceager\Documents                      
+                                                               
+----                -------------         ------ ----          
+d--hsl        12/7/2020  10:28 AM                My Music      
+d--hsl        12/7/2020  10:28 AM                My Pictures   
+d--hsl        12/7/2020  10:28 AM                My Videos     
+-a-hs-        12/7/2020  10:29 AM            402 desktop.ini   
+-arh--       11/18/2020   5:05 PM             35 e1fone.txt    
+
+PS C:\Users\mceager\Documents> Get-Content desktop.ini         
+
+[.ShellClassInfo]                                              
+LocalizedResourceName=@%SystemRoot%\system32\shell32.dll,-21770
+IconResource=%SystemRoot%\system32\imageres.dll,-112           
+IconFile=%SystemRoot%\system32\shell32.dll                     
+IconIndex=-235                                                 
+                                                               
+    Directory: C:\Users\mceager\Documents                      
+
+
+Mode                LastWriteTime         Length Name          
+----                -------------         ------ ----          
+-a-hs-        12/7/2020  10:29 AM            402 desktop.ini   
+-arh--       11/18/2020   5:05 PM             35 e1fone.txt    
+                                                               
+                                                               
+At line:1 char:1                                                                                                              
++ Set-Location .\Desktop\                                                                                                     
++ ~~~~~~~~~~~~~~~~~~~~~~~                                                                                                     
+    + CategoryInfo          : ObjectNotFound: (C:\Users\mceager\Documents\Desktop\:String) [Set-Location], ItemNotFoundException                                                                                                                             
+    + FullyQualifiedErrorId : PathNotFound,Microsoft.PowerShell.Commands.SetLocationCommand                                                                                                                                                                  
+                                                                                                                                                                                                                                                             
+PS C:\Users\mceager\Documents> Set-Location C:\Users\mceager\Desktop                                                                                                                                                                                         
+PS C:\Users\mceager\Desktop> Get-ChildItem -Directory -Hidden -ErrorAction SilentlyContinue                                                                                                                                                                  
+
+
+    Directory: C:\Users\mceager\Desktop                        
+                                                               
+Mode                LastWriteTime         Length Name          
+----                -------------         ------ ----          
+d--h--        12/7/2020  11:26 AM                elf2wo        
+
+
+PS C:\Users\mceager\Desktop\elf2wo> Get-ChildItem              
+                                                               
+                                                               
+
+Mode                LastWriteTime         Length Name          
+----                -------------         ------ ----          
+-a----       11/17/2020  10:26 AM             64 e70smsW10Y4k.txt                                                             
+
+
+I want the movie Scrooged <3!                                                                                                 
+PS C:\Users\mceager\Desktop\elf2wo> Select-String -Path 'C:\Windows\' -Pattern 'Elf 2'                                        
+Select-String : The file C:\Windows\ cannot be read: Could not find a part of the path 'C:\Windows\'.                         
+At line:1 char:1                                                                                                              
++ Select-String -Path 'C:\Windows\' -Pattern 'Elf 2'                                                                          
++ ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~                                                                          
+    + CategoryInfo          : InvalidArgument: (:) [Select-String], ArgumentException                                         
+    + FullyQualifiedErrorId : ProcessingFile,Microsoft.PowerShell.Commands.SelectStringCommand                                
+                                                                                                                              
+PS C:\Users\mceager\Desktop\elf2wo> Select-String -Path 'C:\Windows' -Pattern 'Elf 2'                                         
+Select-String : The file C:\Windows cannot be read: Access to the path 'C:\Windows' is denied.                                
+At line:1 char:1                                                                                                              
++ Select-String -Path 'C:\Windows' -Pattern 'Elf 2'                                                                           
++ ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~                                                                           
+    + CategoryInfo          : InvalidArgument: (:) [Select-String], ArgumentException                                         
+    + FullyQualifiedErrorId : ProcessingFile,Microsoft.PowerShell.Commands.SelectStringCommand                                
+                                                                                                                              
+PS C:\Users\mceager\Desktop\elf2wo> cd C:\Windows\System32\                                                                   
+PS C:\Windows\System32> Get-ChildItem -Hidden -Directory -Filter "*3*"                                                        
+
+
+    Directory: C:\Windows\System32                             
+
+
+Mode                LastWriteTime         Length Name          
+----                -------------         ------ ----          
+d--h--       11/23/2020   3:26 PM                3lfthr3e      
+
+
+PS C:\Windows\System32> cd .\3lfthr3e\                         
+PS C:\Windows\System32\3lfthr3e> ls                            
+PS C:\Windows\System32\3lfthr3e> Get-ChildItem                 
+PS C:\Windows\System32\3lfthr3e> Get-ChildItem -Hidden         
+
+
+    Directory: C:\Windows\System32\3lfthr3e                    
+
+
+Mode                LastWriteTime         Length Name          
+----                -------------         ------ ----          
+-arh--       11/17/2020  10:58 AM          85887 1.txt         
+-arh--       11/23/2020   3:26 PM       12061168 2.txt         
+
+
+PS C:\Windows\System32\3lfthr3e> Get-Content 1.txt | Measure-Object -Word                                                     
+
+Lines Words Characters Property                                
+----- ----- ---------- --------                                
+       9999                                                    
+
+
+PS C:\Windows\System32\3lfthr3e> (Get-Content 1.txt)[551]      
+Red                                                            
+PS C:\Windows\System32\3lfthr3e> (Get-Content 1.txt)[6991]     
+Ryder                                                          
+PS C:\Windows\System32\3lfthr3e> Get-Content 2.txt | Select-String -Pattern "*Red*Ryder*"                                     
+Select-String : The string *Red*Ryder* is not a valid regular expression: parsing "*Red*Ryder*" - Quantifier {x,y} following nothing.                                                                                                                        
+At line:1 char:21                                                                                                                                                                                                                                            
++ Get-Content 2.txt | Select-String -Pattern "*Red*Ryder*"     
++                     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~     
+    + CategoryInfo          : InvalidArgument: (:) [Select-String], ArgumentException                                         
+    + FullyQualifiedErrorId : InvalidRegex,Microsoft.PowerShell.Commands.SelectStringCommand                                  
+                                                                                                                              
+PS C:\Windows\System32\3lfthr3e> Get-Content 2.txt | Select-String -Pattern "redryder"                                        
+
+redryderbbgun                                                  
+
+
+PS C:\Windows\System32\3lfthr3e>                               

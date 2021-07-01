@@ -5,5 +5,6 @@ This will contain my solutions and work for different TryHackMe problems. Cyber 
 ## Modules I have completed or are working through
 
 ### Easy
-* Basic Pentesting
+* Nmap
 * Advent of Cyber 2 (working through)
+* Basic Pentesting

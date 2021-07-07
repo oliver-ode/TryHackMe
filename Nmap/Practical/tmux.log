@@ -1,0 +1,65 @@
+┌──(kali㉿kali)-[~/GitHub/TryHackMe/Nmap/Practical]            
+└─$ ping 10.10.90.34                                           
+PING 10.10.90.34 (10.10.90.34) 56(84) bytes of data.           
+^C                                                             
+--- 10.10.90.34 ping statistics ---                            
+5 packets transmitted, 0 received, 100% packet loss, time 4094ms                                                              
+
+┌──(kali㉿kali)-[~/GitHub/TryHackMe/Nmap/Practical]            
+└─$ sudo nmap -Pn -sX -vv -p1-999 10.10.90.34                                                                                                                                                                                                                
+Host discovery disabled (-Pn). All addresses will be marked 'up' and scan times will be slower.                               
+Starting Nmap 7.91 ( https://nmap.org ) at 2021-07-07 14:26 EDT                                                               
+Initiating Parallel DNS resolution of 1 host. at 14:26         
+Completed Parallel DNS resolution of 1 host. at 14:26, 0.00s elapsed                                                          
+Initiating XMAS Scan at 14:26                                  
+Scanning 10.10.90.34 [999 ports]                               
+XMAS Scan Timing: About 15.52% done; ETC: 14:29 (0:02:49 remaining)                                                           
+XMAS Scan Timing: About 30.53% done; ETC: 14:29 (0:02:19 remaining)                                                           
+XMAS Scan Timing: About 45.15% done; ETC: 14:29 (0:01:51 remaining)                                                           
+XMAS Scan Timing: About 60.16% done; ETC: 14:29 (0:01:20 remaining)                                                           
+XMAS Scan Timing: About 75.18% done; ETC: 14:29 (0:00:50 remaining)                                                           
+Completed XMAS Scan at 14:29, 201.26s elapsed (999 total ports)                                                               
+Nmap scan report for 10.10.90.34                               
+Host is up, received user-set.                                 
+All 999 scanned ports on 10.10.90.34 are open|filtered because of 999 no-responses                                            
+
+Read data files from: /usr/bin/../share/nmap                   
+Nmap done: 1 IP address (1 host up) scanned in 201.35 seconds  
+           Raw packets sent: 1998 (79.920KB) | Rcvd: 0 (0B)    
+
+┌──(kali㉿kali)-[~/GitHub/TryHackMe/Nmap/Practical]            
+└─$ sudo nmap -Pn -sS -p0-5000 10.10.90.34                                                                                                                                                                                                                   
+Host discovery disabled (-Pn). All addresses will be marked 'up' and scan times will be slower.                               
+Starting Nmap 7.91 ( https://nmap.org ) at 2021-07-07 14:21 EDT                                                               
+Nmap scan report for 10.10.90.34                               
+Host is up (0.098s latency).                                   
+Not shown: 4996 filtered ports                                 
+PORT     STATE SERVICE                                         
+21/tcp   open  ftp                                             
+53/tcp   open  domain                                          
+80/tcp   open  http                                            
+135/tcp  open  msrpc                                           
+3389/tcp open  ms-wbt-server                                   
+
+Nmap done: 1 IP address (1 host up) scanned in 18.73 seconds   
+
+┌──(kali㉿kali)-[~/GitHub/TryHackMe/Nmap/Practical]            
+└─$ sudo nmap -Pn --script=ftp-anon 10.10.90.34                                                                                                                                                                                                              
+Host discovery disabled (-Pn). All addresses will be marked 'up' and scan times will be slower.                               
+Starting Nmap 7.91 ( https://nmap.org ) at 2021-07-07 14:22 EDT                                                               
+Nmap scan report for 10.10.90.34                               
+Host is up (0.11s latency).                                    
+Not shown: 995 filtered ports                                  
+PORT     STATE SERVICE                                         
+21/tcp   open  ftp                                             
+| ftp-anon: Anonymous FTP login allowed (FTP code 230)         
+|_Can't get directory listing: TIMEOUT                         
+53/tcp   open  domain                                          
+80/tcp   open  http                                            
+135/tcp  open  msrpc                                           
+3389/tcp open  ms-wbt-server                                   
+
+Nmap done: 1 IP address (1 host up) scanned in 38.54 seconds   
+
+┌──(kali㉿kali)-[~/GitHub/TryHackMe/Nmap/Practical]            
+└─$                                                            

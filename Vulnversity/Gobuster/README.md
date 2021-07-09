@@ -1,4 +1,4 @@
-# Vulnversity - Reconnaissance
+# Vulnversity - Directory scanning
 
 ## Related files
 * `tmux.log` - `tmux` log file

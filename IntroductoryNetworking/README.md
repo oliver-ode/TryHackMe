@@ -39,3 +39,15 @@ All of these answers can really be found by reading through the associated readi
 * `-i` - Man page
 * `-4` - Man page
 * `-v` - Man page
+
+## Tool: Traceroute
+* `-i` - Man page
+* `-T` - Man page
+* Internet
+
+## Tool: Whois
+* `94025`
+* `29/03/1997`
+* Redmond
+* Bellevue Golf Course
+* `msnhst@microsoft.com`

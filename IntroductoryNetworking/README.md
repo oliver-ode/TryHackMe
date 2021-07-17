@@ -35,14 +35,14 @@ All of these answers can really be found by reading through the associated readi
 
 ## Tool: Ping
 * `ping bbc.co.uk`
-* `217.160.0.152` - We can get this by simply pinging the given address
-* `-i` - Man page
-* `-4` - Man page
-* `-v` - Man page
+* `217.160.0.152`
+* `-i`
+* `-4`
+* `-v`
 
 ## Tool: Traceroute
-* `-i` - Man page
-* `-T` - Man page
+* `-i`
+* `-T`
 * Internet
 
 ## Tool: Whois
@@ -51,3 +51,11 @@ All of these answers can really be found by reading through the associated readi
 * Redmond
 * Bellevue Golf Course
 * `msnhst@microsoft.com`
+
+## Tool: Dig
+* Domain Name System
+* Recursive
+* Top-level domain
+* Local cache
+* `8.8.4.4`
+* `86400`

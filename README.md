@@ -5,7 +5,8 @@ This will contain my solutions and work for different TryHackMe problems. Cyber 
 ## Modules
 
 ### Easy
-* Kenobi (working through)
+* Introductory Researching (working through)
+* Kenobi
 * Introductory Networking
 * Vulnversity
 * Nmap

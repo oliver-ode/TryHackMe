@@ -5,7 +5,8 @@ This will contain my solutions and work for different TryHackMe problems. Cyber 
 ## Modules
 
 ### Easy
-* Introductory Researching (working through)
+* Metasploit (working through)
+* Introductory Researching
 * Kenobi
 * Introductory Networking
 * Vulnversity
@@ -14,7 +15,6 @@ This will contain my solutions and work for different TryHackMe problems. Cyber 
 * Basic Pentesting
 
 #### Plan to do
-* Metasploit
 * Network Services
 * Network Services 2
 * Burp Suite

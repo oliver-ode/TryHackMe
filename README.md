@@ -18,3 +18,8 @@ This will contain my solutions and work for different TryHackMe problems. Cyber 
 * Network Services
 * Network Services 2
 * Burp Suite
+* OWASP Top 10
+* Pickle Rick
+* Simple CTF
+* RootMe
+* Hydra

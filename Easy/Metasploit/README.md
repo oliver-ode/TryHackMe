@@ -19,3 +19,12 @@ All of these answers can really be found by reading through the associated readi
 * `unset`
 * `spool`
 * `save`
+
+## Modules
+* Exploit
+* Payload
+* Auxilliary
+* Post
+* Encoder
+* NOP
+* `load`

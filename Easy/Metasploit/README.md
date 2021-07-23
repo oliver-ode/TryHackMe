@@ -28,3 +28,8 @@ All of these answers can really be found by reading through the associated readi
 * Encoder
 * NOP
 * `load`
+
+## Move that shell
+* `msrpc`
+* `exploit/windows/http/icecast_header`
+* `#`

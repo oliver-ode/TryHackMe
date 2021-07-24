@@ -1,6 +1,6 @@
 # Introductory Researching
 
-All of these answers can really be found by reading through the associated reading so just the solutions will be listed.
+All of these answers can be found by reading through the associated reading so just the solutions will be listed.
 
 ## Example Research Question
 * Repeater

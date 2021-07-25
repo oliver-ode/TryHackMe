@@ -5,7 +5,8 @@ This will contain my solutions and work for different TryHackMe problems. Cyber 
 ## Modules
 
 ### Easy
-* Metasploit (working through)
+* Pickle Rick (working through)
+* Metasploit
 * Introductory Researching
 * Kenobi
 * Introductory Networking
@@ -15,11 +16,8 @@ This will contain my solutions and work for different TryHackMe problems. Cyber 
 * Basic Pentesting
 
 #### Plan to do
-* Network Services
-* Network Services 2
 * Burp Suite
 * OWASP Top 10
-* Pickle Rick
 * Simple CTF
 * RootMe
 * Hydra

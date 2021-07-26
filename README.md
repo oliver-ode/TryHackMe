@@ -5,7 +5,7 @@ This will contain my solutions and work for different TryHackMe problems. Cyber 
 ## Modules
 
 ### Easy
-* Pickle Rick (working through)
+* Pickle Rick
 * Metasploit
 * Introductory Researching
 * Kenobi

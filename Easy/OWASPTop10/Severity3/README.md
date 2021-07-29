@@ -1,4 +1,4 @@
-# OWASP Top 10 - Severity 2
+# OWASP Top 10 - Severity 3
 
 ## Answers
 * `/assets`

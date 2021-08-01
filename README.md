@@ -5,7 +5,7 @@ This will contain my solutions and work for different TryHackMe problems. Cyber 
 ## Modules
 
 ### Easy
-* OWASP Top 10 (working through)
+* OWASP Top 10
 * Pickle Rick
 * Metasploit
 * Introductory Researching

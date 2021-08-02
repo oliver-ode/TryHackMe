@@ -5,6 +5,7 @@ This will contain my solutions and work for different TryHackMe problems. Cyber 
 ## Modules
 
 ### Easy
+* Simple CTF
 * OWASP Top 10
 * Pickle Rick
 * Metasploit
@@ -18,6 +19,5 @@ This will contain my solutions and work for different TryHackMe problems. Cyber 
 
 #### Plan to do
 * Burp Suite
-* Simple CTF
 * RootMe
 * Hydra

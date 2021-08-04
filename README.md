@@ -19,5 +19,17 @@ This will contain my solutions and work for different TryHackMe problems. Cyber 
 * Basic Pentesting
 
 #### Plan to do
-* Burp Suite
+* Web Fundamentals
+* Google Dorking
 * Hydra
+* CC: Pen Testing
+* The find command
+* OWASP Juice Shop
+* Linux Strength Training
+* tmux
+* Buffer Overflow Prep
+* Overpass 2 - Hacked
+* Wreath
+* DNS in Detail
+* Networking
+* The Cod Caper

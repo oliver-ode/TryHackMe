@@ -5,6 +5,7 @@ This will contain my solutions and work for different TryHackMe problems. Cyber 
 ## Modules
 
 ### Easy
+* Web Fundamentals
 * RootMe
 * Simple CTF
 * OWASP Top 10
@@ -19,7 +20,6 @@ This will contain my solutions and work for different TryHackMe problems. Cyber 
 * Basic Pentesting
 
 #### Plan to do
-* Web Fundamentals
 * Google Dorking
 * Hydra
 * CC: Pen Testing

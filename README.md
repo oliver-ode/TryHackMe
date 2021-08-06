@@ -5,6 +5,7 @@ This will contain my solutions and work for different TryHackMe problems. Cyber 
 ## Modules
 
 ### Easy
+* The find command
 * Web Fundamentals
 * RootMe
 * Simple CTF
@@ -23,7 +24,6 @@ This will contain my solutions and work for different TryHackMe problems. Cyber 
 * Google Dorking
 * Hydra
 * CC: Pen Testing
-* The find command
 * OWASP Juice Shop
 * Linux Strength Training
 * tmux

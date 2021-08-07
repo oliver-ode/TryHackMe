@@ -5,6 +5,7 @@ This will contain my solutions and work for different TryHackMe problems. Cyber 
 ## Modules
 
 ### Easy
+* Hydra
 * Google Dorking
 * The find command
 * Web Fundamentals
@@ -22,7 +23,6 @@ This will contain my solutions and work for different TryHackMe problems. Cyber 
 * Basic Pentesting
 
 #### Plan to do
-* Hydra
 * CC: Pen Testing
 * OWASP Juice Shop
 * Linux Strength Training

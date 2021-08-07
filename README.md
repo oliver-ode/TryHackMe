@@ -5,6 +5,7 @@ This will contain my solutions and work for different TryHackMe problems. Cyber 
 ## Modules
 
 ### Easy
+* Google Dorking
 * The find command
 * Web Fundamentals
 * RootMe
@@ -21,7 +22,6 @@ This will contain my solutions and work for different TryHackMe problems. Cyber 
 * Basic Pentesting
 
 #### Plan to do
-* Google Dorking
 * Hydra
 * CC: Pen Testing
 * OWASP Juice Shop

@@ -5,6 +5,7 @@ This will contain my solutions and work for different TryHackMe problems. Cyber 
 ## Modules
 
 ### Easy
+* Linux Strength Training (working through)
 * Hydra
 * Google Dorking
 * The find command
@@ -25,7 +26,6 @@ This will contain my solutions and work for different TryHackMe problems. Cyber 
 #### Plan to do
 * CC: Pen Testing
 * OWASP Juice Shop
-* Linux Strength Training
 * tmux
 * Buffer Overflow Prep
 * Overpass 2 - Hacked

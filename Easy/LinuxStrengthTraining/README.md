@@ -88,3 +88,16 @@ Using `hash-identifier` we can see that the has is an `SHA-1` hash. Looking up i
 ### hashC.txt
 
 We can copy the wordlist over to our local system using `scp` and then we can use `hash-identifier` to see that it is a `SHA-256` hash. The website gives us a format of `raw-sha256` which we can use in the command `john --format=raw-sha256 --wordlist=ww.mnf hashC.txt` to get a password of `unacvaolipatnuggi`.
+
+## Base64
+
+**Related files**
+* `hashSpecial.txt` - Hash from `ent.txt`
+
+### Tool
+
+The tool is the one that is mentioned above: `base64`.
+
+### encoded.txt
+
+Piping the text file `encoded.txt` into `base64` gives us a large block of text that tells us to search for the string `special`. Searching for this leads us to the file `ent.txt`. This seems to be in a hash so we can run `hash-identifier` to see that it is in fact a `MD5` hash. Using `john` with the `rockyou.txt` wordlist will give us a password of `john` which is the special answer.

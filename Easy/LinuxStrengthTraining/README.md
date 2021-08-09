@@ -62,4 +62,29 @@ Instructions: Move the MoveMe.txt file to the march folder directory and then ex
                                  how to work with files that begin with a - (dash) whether that is to do with copying or moving files 
                                  how to work with files with spaces
 ```
-To move the file we can navigate to the `RecordsFinances` directory and execute `mv -- -MoveMe.txt -march\ folder`. Then we can simply run `./-runME.sh` to get the flag of `Flag{234@i4s87u5hbn$3}`. 
+To move the file we can navigate to the `RecordsFinances` directory and execute `mv -- -MoveMe.txt -march\ folder`. Then we can simply run `./-runME.sh` to get the flag of `Flag{234@i4s87u5hbn$3}`.
+
+## Hashing - introduction
+
+**Related files**
+* `hash1.txt`
+* `hashA.txt`
+* `hashB.txt`
+* `hashC.txt`
+* `ww.mnf`
+
+### hash1.txt
+
+Running `john --format=raw-md5 --wordlist=/usr/share/wordlists/rockyou.txt hash1.txt` gives us a password of `secret123`
+
+### hashA.txt
+
+Using `hash-identifier` we can see that the hash is an `MD4` hash. We can look that up [here](http://pentestmonkey.net/cheat-sheet/john-the-ripper-hash-formats) to find a format of `raw-md4`. Using `john --format=raw-md4 --wordlist=/usr/share/wordlists/rockyou.txt hashA.txt` will then give us a password of `admin`.
+
+### hashB.txt
+
+Using `hash-identifier` we can see that the has is an `SHA-1` hash. Looking up in the previous website we can find the format of `raw-sha1`. Using `john --format=raw-sha1 --wordlist=/usr/share/wordlists/rockyou.txt hashB.txt` will then gives us a password of `letmein`
+
+### hashC.txt
+
+We can copy the wordlist over to our local system using `scp` and then we can use `hash-identifier` to see that it is a `SHA-256` hash. The website gives us a format of `raw-sha256` which we can use in the command `john --format=raw-sha256 --wordlist=ww.mnf hashC.txt` to get a password of `unacvaolipatnuggi`.

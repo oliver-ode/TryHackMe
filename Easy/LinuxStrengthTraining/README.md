@@ -101,3 +101,17 @@ The tool is the one that is mentioned above: `base64`.
 ### encoded.txt
 
 Piping the text file `encoded.txt` into `base64` gives us a large block of text that tells us to search for the string `special`. Searching for this leads us to the file `ent.txt`. This seems to be in a hash so we can run `hash-identifier` to see that it is in fact a `MD5` hash. Using `john` with the `rockyou.txt` wordlist will give us a password of `john` which is the special answer.
+
+## Encryption/decryption w/ gpg
+
+### Flag
+
+`gpg /home/sarah/system\ AB/keys/vnmA/layer4.txt` (password = `bob`) gives us a hint to find `layer3.txt`
+
+`gpg /home/sarah/oldLogs/2014-02-15/layer3.txt` (password = `james`) gives us a hint to find `layer2.txt`
+
+`gpg /home/sarah/oldLogs/settings/layer2.txt` (password = `tony`) gives us the string of `MS4gRmluZCBhIGZpbGUgY2FsbGVkIGxheWVyMS50eHQsIGl0cyBwYXNzd29yZCBpcyBoYWNrZWQu`
+
+The string seems to be a base64 string so we can use `echo "MS4gRmluZCBhIGZpbGUgY2FsbGVkIGxheWVyMS50eHQsIGl0cyBwYXNzd29yZCBpcyBoYWNrZWQu" | base64 -d` which gives us a hint to find `layer1.txt`
+
+`gpg /home/sarah/logs/zmn/layer1.txt` (password = `hacked`) which gives us the final flag `Flag{B07$f854f5ghg4s37}`

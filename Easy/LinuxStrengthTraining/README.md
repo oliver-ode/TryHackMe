@@ -115,3 +115,26 @@ Piping the text file `encoded.txt` into `base64` gives us a large block of text 
 The string seems to be a base64 string so we can use `echo "MS4gRmluZCBhIGZpbGUgY2FsbGVkIGxheWVyMS50eHQsIGl0cyBwYXNzd29yZCBpcyBoYWNrZWQu" | base64 -d` which gives us a hint to find `layer1.txt`
 
 `gpg /home/sarah/logs/zmn/layer1.txt` (password = `hacked`) which gives us the final flag `Flag{B07$f854f5ghg4s37}`
+
+## Cracking encrypted gpg files
+
+**Related files**
+* `personal.txt.gpg`
+* `data.txt`
+* `data_tac.txt` - Output of `tac data.txt`
+* `hash` - John readable format of `personal.txt.gpg`
+* `personal.txt` - Final decrpted version of `personal.txt.gpg`
+
+### Copying files across
+
+GPG: `scp /home/sarah/oldLogs/units/personal.txt.gpg .`
+
+Wordlist: `scp /home/sarah/logs/zmn/old\\\ stuff/-mvLp/data.txt .`
+
+Tac'n the wordlist `tac data.txt > data_tac.txt`
+
+### John
+
+`gpg2john personal.txt.gpg > hash`
+
+Using `john --wordlist=data_tac.txt --format=gpg hash` we get a password of `valamanezivonia`. We can then run `gpg personal.txt.gpg` and get an output file of `personal.txt` which contains the solution.

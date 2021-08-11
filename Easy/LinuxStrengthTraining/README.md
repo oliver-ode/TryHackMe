@@ -138,3 +138,7 @@ Tac'n the wordlist `tac data.txt > data_tac.txt`
 `gpg2john personal.txt.gpg > hash`
 
 Using `john --wordlist=data_tac.txt --format=gpg hash` we get a password of `valamanezivonia`. We can then run `gpg personal.txt.gpg` and get an output file of `personal.txt` which contains the solution.
+
+## Reading SQL databases
+
+We can find the database to be located at: `/home/sarah/serverLx/employees.sql`. We can get into a `mysql` command prompt and run `USE employees` and then `DESCRIBE employees`. We can check `first_name` and `last_name` for the flag by running the following command (changing the field): `SELECT * FROM employees WHERE last_name LIKE '%{%}';`. Running this will show one entry which is our flag `Flag{13490AB8}`.

@@ -5,7 +5,7 @@ This will contain my solutions and work for different TryHackMe problems. Cyber 
 ## Modules
 
 ### Easy
-* Linux Strength Training (working through)
+* Linux Strength Training
 * Hydra
 * Google Dorking
 * The find command

@@ -142,3 +142,107 @@ Using `john --wordlist=data_tac.txt --format=gpg hash` we get a password of `val
 ## Reading SQL databases
 
 We can find the database to be located at: `/home/sarah/serverLx/employees.sql`. We can get into a `mysql` command prompt and run `USE employees` and then `DESCRIBE employees`. We can check `first_name` and `last_name` for the flag by running the following command (changing the field): `SELECT * FROM employees WHERE last_name LIKE '%{%}';`. Running this will show one entry which is our flag `Flag{13490AB8}`.
+
+## Final Challenge
+
+### Initial instructions
+
+Located in the file `/home/shared/chatlogs/LpnQ` is:
+
+```
+(2020-08-13) Sarah: Hey Lucy, what happened to the database server? It is completely down now!
+
+(2020-08-13) Lucy: Yes, I believe we have had a problem. I will need to investigate but for now there will be downtime for who knows how long.
+
+(2020-08-13) Sarah: That is a shame, I needed to refer to a customer’s record due to them being unhappy with our service yesterday.
+
+(2020-08-13) Lucy: if you ask Sameer, he may be able to help you find the back-up database copy we made a few hours ago?
+
+(2020-08-13) Sarah: Of course, he is one of the sql developers around here in charge of the database creation, I will ask him in a few minutes. Thank you.
+
+(2020-08-13) Lucy: No problem. By the way, our new security engineer may have accidently stored the SSH password of one of our employees. I have no idea how to change it and he will not be back till tomorrow.
+
+(2020-08-13) Sarah: That is a shame. I am sure we will all be fine till he returns. Do you know which employee it is?
+
+(2020-08-13) Lucy: I think it may have affected James but I not entirely sure.
+
+(2020-08-13) Sarah: That is terrible, but I am sure nothing will come of it, he will be back tomorrow.
+
+(2020-08-13) Lucy: True. It is just a concern of mine because James is the only one with root access. But as you said, we should be ok. Talk to you later. Bye.
+```
+
+### SSH password and location of back-up
+
+Using `grep back-up *` we can search for all files that contain the word "back-up" which is 2 new file apart from `LpnQ` which are `Pqmr` and `KfnP`.
+
+Contents of `Pqmr`
+```
+(2020-08-13) Sarah: Hey Sameer, do you by any chance no where I can find the sql back-up copy on this system? The database server is down, and I really need to help a customer out.
+
+(2020-08-13) Sameer: Sure. let me check.
+
+(2020-08-13) Sarah: Thanks.
+
+(2020-08-13) Sameer: check the home/shared/sql/ directory. It should be in there with the date of today.
+
+(2020-08-13) Sarah: Thank you Sameer.
+
+(2020-08-13) Sameer: No problem. It probably is encrypted. Just use the password: danepon.
+
+(2020-08-13) Sarah: OK, thank you.
+
+(2020-08-13) Sameer: No problem
+
+(2020-08-13) Sameer: By the way, if you have any issues just talk to Michael as I will be off for the remainder of the day. See you tomorrow. Bye.
+
+(2020-08-13) Sarah: Bye.
+```
+
+Contents of `KfnP`
+```
+(2020-08-13) Sarah: Michael, I have been having trouble accessing the sql database back-up copy made today. Sameer gave me the password, but it just will not work?
+
+(2020-08-13) Michael: Ah, yes. I remember, the security engineer was testing out a new automated software for creating sql database backups. He must have configured it to encrypt the backups with a different password.
+
+(2020-08-13) Sarah: So how can I get a hold of it?
+
+(2020-08-13) Michael: Good question. From what I remember the test program utilised a configuration file around 50mb. It is located inside the home/shared/sql/conf directory. This configuration file contained the directory location of a wordlist it used to randomly select a password from for encrypting the sql back-up copies with. 
+
+(2020-08-13) Sarah: I do not really understand the last part?
+
+(2020-08-13) Michael: once you find the configuration file and consequently the wordlist directory, visit it. One of those wordlists must contain the password it used for the testing. All I remember is that the password began with ebq. You will need Sameer’s account. His SSH password is: thegreatestpasswordever000. 
+
+(2020-08-13) Sarah: Thank you, I will try to find it.
+```
+
+From these messages we know the following:
+* `James` has a leaked password and has root access
+* `/home/shared/sql/` is the location of the encrypted back-up database
+* `/home/shared/sql/conf/` contains a `50mb` file that has the wordlist location for the actual password
+* The password in the wordlist begins with `ebq`
+* Sameer's SSH password is `thegreatestpasswordever000`
+
+### Back-up database password
+
+Using `find /home/shared/sql/conf * -type f -size 50M` we can search for all files that are 50mb and it will only return a single file called `JKpN`. Looking in the file it has a header that contains the location of the wordlist at `aG9tZS9zYW1lZXIvSGlzdG9yeSBMQi9sYWJtaW5kL2xhdGVzdEJ1aWxkL2NvbmZpZ0JEQgo=`. This seems to be base64 so we can use `echo "aG9tZS9zYW1lZXIvSGlzdG9yeSBMQi9sYWJtaW5kL2xhdGVzdEJ1aWxkL2NvbmZpZ0JEQgo=" | base64 -d` to get the actual location of `home/sameer/History LB/labmind/latestBuild/configBDB`. Inside of that directory we can use `cat * | grep "ebq"` to get a list of all strings that start with `ebq` which is:
+
+```
+ebqiuiud
+ebqjoisjdfij
+ebqiojsdfioj
+ebqiojsiodj
+ebqiojdifoj
+ebqiopsjdfopj
+ebqnice
+ebqops
+ebqkjjdd
+ebqijsji
+ebqopkopk
+ebqattle
+```
+
+We can manually brute force through all of these to find out that the password is `ebqattle`.
+
+### Finding James's password and getting the flag.
+
+With the encryption key we can decrypt the `.gpg` and then unzip it. There are a bunch of `.dump` files which seem to contain potentially relevant information. We can search for James in the files by running `grep -rn *.dump -ie "james"` which returns one entry that contains the string `vuimaxcullings` which is James's password! We can ssh into his account and since he has root access we can run `sudo bash` to get a terminal as root and then simply navigate to `/root` and `cat` out the flag: `Flag{6$8$hyJSJ3KDJ3881}`

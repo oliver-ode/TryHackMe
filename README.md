@@ -5,6 +5,7 @@ This will contain my solutions and work for different TryHackMe problems. Cyber 
 ## Modules
 
 ### Easy
+* Networking
 * Linux Strength Training
 * Hydra
 * Google Dorking
@@ -31,5 +32,4 @@ This will contain my solutions and work for different TryHackMe problems. Cyber 
 * Overpass 2 - Hacked
 * Wreath
 * DNS in Detail
-* Networking
 * The Cod Caper

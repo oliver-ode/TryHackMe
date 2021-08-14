@@ -5,6 +5,7 @@ This will contain my solutions and work for different TryHackMe problems. Cyber 
 ## Modules
 
 ### Easy
+* tmux
 * Networking
 * Linux Strength Training
 * Hydra
@@ -27,7 +28,6 @@ This will contain my solutions and work for different TryHackMe problems. Cyber 
 #### Plan to do
 * CC: Pen Testing
 * OWASP Juice Shop
-* tmux
 * Buffer Overflow Prep
 * Overpass 2 - Hacked
 * Wreath

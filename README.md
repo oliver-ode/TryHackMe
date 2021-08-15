@@ -1,6 +1,6 @@
 # TryHackMe
 
-This will contain my solutions and work for different TryHackMe problems. Cyber Security has been something that has interested me for a while yet I have never really got around do learning it. I recently stumbled across TryHackMe and after doing some research into it decided to give it a go.
+Cyber Security has been something that has interested me for a while yet I have never really got around do learning it. I recently stumbled across TryHackMe and after doing some research into it decided to give it a go. This will contain my solutions and work for different TryHackMe problems. TryHackMe involves different modules that can either be categorized as tutorial/teaching modules or challenge modules. The tutorial/teaching modules basically provide the solutions or at least explain how to do it in more than enough detail which means that I will tend to only note down the actual answer that TryHackMe is looking for. For the challenge or CTF based modules I will provide as much information as possible about my thought process and what I am actually thinking and trying to do when working through the problems.
 
 ## Modules
 

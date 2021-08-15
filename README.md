@@ -5,6 +5,7 @@ This will contain my solutions and work for different TryHackMe problems. Cyber 
 ## Modules
 
 ### Easy
+* DNS in Detail
 * tmux
 * Networking
 * Linux Strength Training
@@ -31,5 +32,4 @@ This will contain my solutions and work for different TryHackMe problems. Cyber 
 * Buffer Overflow Prep
 * Overpass 2 - Hacked
 * Wreath
-* DNS in Detail
 * The Cod Caper

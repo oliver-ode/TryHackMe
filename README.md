@@ -5,6 +5,7 @@ This will contain my solutions and work for different TryHackMe problems. Cyber 
 ## Modules
 
 ### Easy
+* OWASP Juice Shop (in progress)
 * DNS in Detail
 * tmux
 * Networking
@@ -28,7 +29,6 @@ This will contain my solutions and work for different TryHackMe problems. Cyber 
 
 #### Plan to do
 * CC: Pen Testing
-* OWASP Juice Shop
 * Buffer Overflow Prep
 * Overpass 2 - Hacked
 * Wreath

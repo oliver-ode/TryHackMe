@@ -5,7 +5,7 @@ Cyber Security has been something that has interested me for a while yet I have 
 ## Modules
 
 ### Easy
-* OWASP Juice Shop (in progress)
+* OWASP Juice Shop
 * DNS in Detail
 * tmux
 * Networking

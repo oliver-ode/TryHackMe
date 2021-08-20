@@ -5,6 +5,7 @@ Cyber Security has been something that has interested me for a while yet I have 
 ## Modules
 
 ### Easy
+* CC: Pen Testing (wip)
 * The Cod Caper
 * Overpass 2 - Hacked
 * OWASP Juice Shop
@@ -30,6 +31,5 @@ Cyber Security has been something that has interested me for a while yet I have 
 * Basic Pentesting
 
 #### Plan to do
-* CC: Pen Testing
 * Buffer Overflow Prep
 * Wreath

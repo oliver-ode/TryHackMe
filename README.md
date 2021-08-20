@@ -5,7 +5,7 @@ Cyber Security has been something that has interested me for a while yet I have 
 ## Modules
 
 ### Easy
-* The Cod Caper (wip)
+* The Cod Caper
 * Overpass 2 - Hacked
 * OWASP Juice Shop
 * DNS in Detail

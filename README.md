@@ -33,3 +33,12 @@ Cyber Security has been something that has interested me for a while yet I have 
 #### Plan to do
 * Buffer Overflow Prep
 * Wreath
+* OhSINT
+* Bounty Hacker
+* Crack the hash
+* Agent Sudo
+* LazyAdmin
+* Overpass
+* c4ptur3-th3-fl4g
+* Ignite
+* Startup
